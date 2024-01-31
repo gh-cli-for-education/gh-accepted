@@ -35,9 +35,10 @@ if [ -z "$CLASSROOM" ]; then
     echo "No classroom \"$ORGANIZATION\" found"
     exit 1
 fi
+#echo $CLASSROOM
 ASSIGNMENTID=$(gh classroom assignments --per-page 200  -c $CLASSROOM | grep -i $CLASSROOMPATTERN | awk '{print $1}')
 if [ -z "$ASSIGNMENTID" ]; then
-    echo "No assignment \"$CLASSROOMPATTERN\" found"
+    echo "No assignment \"$CLASSROOMPATTERN\" found in \"$ORGANIZATION\""
     exit 1
 fi
 RESULT=$(gh classroom accepted-assignments -a $ASSIGNMENTID)
