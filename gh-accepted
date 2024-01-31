@@ -12,9 +12,17 @@ set -e
 # 12789701  false      false    16                                              Konobono           https://github.com/ULL-ESIT-DMSI-2324/nextjs-konrad-jan-pierzchlewicz-alu0101686226
 # 12789715  false      false    15                                              DanMAMO            https://github.com/ULL-ESIT-DMSI-2324/nextjs-daniel-marichal-monsonis-alu0101014548
 
+function usage() {
+    echo "Usage: gh accepted <classroom assignment name> [organization]"
+    echo "Description: List of github classroom accepted assignments"
+}
+# if option is -h or --help, then show help
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    usage
+    exit 0
+fi
 if [ -z "$1" ]; then
-    echo "Usage: $0 <classroom assignment name> [organization]"
-    echo "list of github classroom accepted assignments"
+    usage
     exit 1
 fi
 CLASSROOMPATTERN=$1
